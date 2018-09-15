@@ -1,0 +1,25 @@
+{
+  "name": "ideascubeng",
+  "version": "1.0.0",
+  "description": "Rest API Service for Ideas Cube NG",
+  "main": "server.js",
+  "scripts": {
+    "test": "mocha --recursive -g Unit Test && mocha --recursive -g Integration Test",
+    "start": "nodemon app.js"
+  },
+  "keywords": [
+    "RESTful",
+    "API",
+    "IdeasCubeNG"
+  ],
+  "author": "esteban.santiago@bibliosansfrontieres.org",
+  "license": "ISC",
+  "devDependencies": {
+    "mocha": "^5.2.0",
+    "nodemon": "^1.18.4"
+  },
+  "dependencies": {
+    "express": "^4.16.3",
+    "lunr": "^2.3.3"
+  }
+}

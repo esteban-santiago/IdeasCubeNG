@@ -1,0 +1,14 @@
+[
+  { "id":"1",
+    "title":"Comment réaliser un patron à partir d'un vêtement noir?",
+    "tags":["ar"],
+    "href":"/apprendre-a-utiliser-des-patrons-fr/Comment_reproduire_un_patron.mp4.de-de",
+    "description":"Cette vidéo montre aux tailleurs comment réaliser un patron à partir d'un vêtement assemblé. Il prend l'exemple d'un t-shirt, mais peut être généralisé à tout type de vêtement."
+  },
+  { "id":"2",
+    "title":"Comment réaliser un patron à partir d'un vêtement ?",
+    "tags":["es"],
+    "href":"/apprendre-a-utiliser-des-patrons-fr/Comment_reproduire_un_patron.mp4.es-es",
+    "description":"Cette vidéo montre aux tailleurs comment réaliser un patron à partir d'un vêtement assemblé. Il prend l'exemple d'un t-shirt, mais peut être généralisé à tout type de vêtement."
+  }
+]
