@@ -11,12 +11,18 @@ module.exports = function(app) {
   });
 
   app.get(PATH + '/search/:keyword', function(req, res){
-    searchService.search(req.params.keyword).then(results => res.send(results));
+    searchService.search(req.params.keyword)
+      .then((results) => res.send(results));
   });
 
   app.get(PATH + '/search/:field/:keyword', function(req, res){
-    searchService.search(req.params.keyword).then(results => res.send(results));
+    searchService.search(req.params.keyword)
+      .then((results) => res.send(results));
   });
 
+  app.get(PATH + '/search/:language/:field/:keyword', function(req, res){
+    searchService.search(req.params.keyword)
+      .then((results) => res.send(results));
+  });
 
 }

@@ -4,7 +4,8 @@
   "description": "Rest API Service for Ideas Cube NG",
   "main": "server.js",
   "scripts": {
-    "test": "mocha --recursive -g Unit Test && mocha --recursive -g Integration Test",
+    "test": "mocha --exit --recursive -g Unit Test",
+    "unused": "&& mocha --recursive -g Integration Test",
     "start": "nodemon app.js"
   },
   "keywords": [
@@ -15,8 +16,11 @@
   "author": "esteban.santiago@bibliosansfrontieres.org",
   "license": "ISC",
   "devDependencies": {
+    "chai": "^4.1.2",
     "mocha": "^5.2.0",
-    "nodemon": "^1.18.4"
+    "nodemon": "^1.18.4",
+    "should": "^13.2.3",
+    "supertest": "^3.3.0"
   },
   "dependencies": {
     "express": "^4.16.3",
