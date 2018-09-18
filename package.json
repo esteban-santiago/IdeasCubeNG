@@ -5,7 +5,7 @@
   "main": "server.js",
   "scripts": {
     "test": "mocha --exit --recursive -g Unit Test",
-    "unused": "&& mocha --recursive -g Integration Test",
+    "integration-test": "mocha --recursive -g Integration Test",
     "start": "nodemon app.js"
   },
   "keywords": [

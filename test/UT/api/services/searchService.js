@@ -1,4 +1,6 @@
 /*jslint node: true */
+/*global describe, before*/
+
 'use strict';
 //var assert = require('assert');
 //var should = require('should');
@@ -9,26 +11,23 @@ var app = require('../../../../app');
 var searchService = require('../../../../api/services/searchService');
 
 
-describe('Search services - Unit Test', function () {
-
-  before(function () {
-  });
+describe('Search services - Unit Test', function() {
+  before(function() {});
 
   describe('#search by keyword', function() {
     var keyword = 'noir';
-    it('should return a list of occurrences with keyword ' + keyword, function (done) {
+    it('should return a list of occurrences with keyword ' + keyword, function(done) {
       request(app)
-      .get('/api/ideascubeng/v1.0/search/' + keyword)
-      .end(function (err, res) {
-        expect(res.statusCode).to.equal(200);
-        expect(res.body).to.have.length.above(0);
-        //console.log(res.body[0].id);
-        done();
-      });
+        .get('/api/ideascubeng/v1.0/search/' + keyword)
+        .end(function(err, res) {
+          expect(res.statusCode).to.equal(200);
+          expect(res.body).to.have.length.above(0);
+          //console.log(res.body[0].id);
+          done();
+        });
     });
   });
 
-  afterEach(function () {
-  });
+  afterEach(function() {});
 
 });
