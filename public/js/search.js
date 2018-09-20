@@ -8,4 +8,4 @@ $("#searchb").click(function() {
       $('#content_box').append('<a href="' + entry.href + '">' + entry.title + '</a><br>');
     });
   });
-});
+}); 
