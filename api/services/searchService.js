@@ -1,6 +1,6 @@
-var SearchModel = require('../models/SearchModel');
-var fs = require('fs'),
- lunr = require('lunr');
+var fs = require('fs'), lunr = require('lunr'), xmljs = require('xml-js');
+//var SearchModel = require('../models/SearchModel');
+
 
 /**
 private functions
