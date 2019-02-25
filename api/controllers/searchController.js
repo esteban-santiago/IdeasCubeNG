@@ -2,7 +2,8 @@
 
 var xmljs = require('xml-js');
 var searchService = require('../services/searchService');
-var searchModel = require('../models/searchModel');
+//var searchModel = require('../models/searchModel');
+var encoder = require('../encoder/xml-jsonEncoder');
 
 
 const PATH = '/api/ideascubeng/v1.0';
@@ -20,7 +21,7 @@ module.exports = function(app) {
     searchService.search(req.params.keyword)
       .then(
         (results) => {
-          console.log(xmljs.json2xml(searchModel.OpenSearchModel, {compact: false, ignoreComment: false, spaces: 4}));
+          console.log(encoder.jsonToOpenSearchFormat());
           res.send();
           //console.log(xmljs.json2xml(results, {compact: true, ignoreComment: true, spaces: 4}));
           //res.send();
