@@ -6,193 +6,55 @@ var SearchModel = function (keywords, lang, occurrences) {
   this.occurrences = occurrences;
 };
 
-var injectEntries = function (entries) {
-  var _entries = [];
-  for (var i = 0; i <= 15; i++) {
-    _entries.push({
-      "type": "element",
-      "name": "entry",
-      "elements": [{
-        "type": "element",
-        "name": "title",
-        "elements": [{
-          "type": "text",
-          "text": "Technology content set"
-        }]
-      }, {
-        "type": "element",
-        "name": "link",
-        "attributes": {
-          "href": "http://70.167.220.187:10000/pdfs/2385.pdf",
-          "rel": "alternate"
-        }
-      }, {
-        "type": "element",
-        "name": "updated",
-        "elements": [{
-          "type": "text",
-          "text": "2019-02-22T10:07:56Z"
-        }]
-      }, {
-        "type": "element",
-        "name": "id",
-        "elements": [{
-          "type": "text",
-          "text": "tag:70.167.220.187:/pdfs/2385.pdf"
-        }]
-      }, {
-        "type": "element",
-        "name": "summary",
-        "attributes": {
-          "type": "html"
-        },
-        "elements": [{
-          "type": "text",
-          "text": "A nice flat icon set usable in all your documents"
-        }]
-      }]
-    });
-  }
-  return _entries;
+
+var OpenSearchFeedModel = {
+  'xmlns' : 'http://www.w3.org/2005/Atom',
+  'title' : '',
+  'link' : {  
+    href : '',
+    rel : 'alternate'
+  },
+  'id' : '',
+  'updated' :'',
+  'entries' : []
 }
 
-var OpenSearchModel = function () {
-  var model = {
-    "declaration": {
-      "attributes": {
-        "version": "1.0",
-        "encoding": "utf-8"
-      }
-    },
-    "elements": [{
-      "type": "element",
-      "name": "feed",
-      "attributes": {
-        "xmlns": "http://www.w3.org/2005/Atom"
-      },
-      "elements": [{
-        "type": "element",
-        "name": "title",
-        "elements": [{
-          "type": "text",
-          "text": "Olip search results"
-        }]
-      }, {
-        "type": "element",
-        "name": "link",
-        "attributes": {
-          "href": "http://70.167.220.187:443/opensearch/search?q=test",
-          "rel": "alternate"
-        }
-      }, {
-        "type": "element",
-        "name": "id",
-        "elements": [{
-          "type": "text",
-          "text": "http://70.167.220.187:443/opensearch/search?q=test"
-        }]
-      }, {
-        "type": "element",
-        "name": "updated",
-        "elements": [{
-          "type": "text",
-          "text": "2019-02-22T10:07:56Z"
-        }]
-      }, injectEntries()]
-    }]
+var OpenSearchEntryModel = {
+  'entry' : '',
+  'title' : '',
+  'link' : {  
+    href : '',
+    rel : 'alternate'
+  },
+  'updated' :'',
+  'id' : '',
+  'summary' : {
+    'summary' : '',
+    'type' : ''
   }
-  console.log(JSON.stringify(model));
-  return model;
 }
+
 
 exports.SearchModel = SearchModel;
-exports.OpenSearchModel = OpenSearchModel;
+exports.OpenSearchFeedModel = OpenSearchFeedModel;
+exports.OpenSearchEntryModel = OpenSearchEntryModel;
 
-/*
-var ____OpenSearchModel = {
-  "declaration": {
-    "attributes": {
-      "version": "1.0",
-      "encoding": "utf-8"
-    }
-  },
-  "elements": [{
-    "type": "element",
-    "name": "feed",
-    "attributes": {
-      "xmlns": "http://www.w3.org/2005/Atom"
-    },
-    "elements": [{
-      "type": "element",
-      "name": "title",
-      "elements": [{
-        "type": "text",
-        "text": "Olip search results"
-      }]
-    }, {
-      "type": "element",
-      "name": "link",
-      "attributes": {
-        "href": "http://70.167.220.187:443/opensearch/search?q=test",
-        "rel": "alternate"
-      }
-    }, {
-      "type": "element",
-      "name": "id",
-      "elements": [{
-        "type": "text",
-        "text": "http://70.167.220.187:443/opensearch/search?q=test"
-      }]
-    }, {
-      "type": "element",
-      "name": "updated",
-      "elements": [{
-        "type": "text",
-        "text": "2019-02-22T10:07:56Z"
-      }]
-    }, {
-      "type": "element",
-      "name": "entry",
-      "elements": [{
-        "type": "element",
-        "name": "title",
-        "elements": [{
-          "type": "text",
-          "text": "Technology content set"
-        }]
-      }, {
-        "type": "element",
-        "name": "link",
-        "attributes": {
-          "href": "http://70.167.220.187:10000/pdfs/2385.pdf",
-          "rel": "alternate"
-        }
-      }, {
-        "type": "element",
-        "name": "updated",
-        "elements": [{
-          "type": "text",
-          "text": "2019-02-22T10:07:56Z"
-        }]
-      }, {
-        "type": "element",
-        "name": "id",
-        "elements": [{
-          "type": "text",
-          "text": "tag:70.167.220.187:/pdfs/2385.pdf"
-        }]
-      }, {
-        "type": "element",
-        "name": "summary",
-        "attributes": {
-          "type": "html"
-        },
-        "elements": [{
-          "type": "text",
-          "text": "A nice flat icon set usable in all your documents"
-        }]
-      }]
-    }]
-  }]
-};
- */
+//----Backup functions
+var _OpenSearchFeedModel = function(id, title, link_href, link_rel, updated, entries) {
+  this.title = title;
+  this.link_href = link_href;
+  this.link_rel = 'alternate';
+  this.id = id;
+  this.updated = updated;
+  this.entries = entries;
+}
+
+var OpenSearchEntryModel = function(id, title, link, updated, summary, summary_type) {
+  this.entry = entry;
+  this.title = title;
+  this.link = link;
+  this.updated = updated;
+  this.id = id;
+  this.summary = summary;
+  this.summary_type = summary_type;
+}

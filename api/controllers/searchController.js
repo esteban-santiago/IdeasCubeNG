@@ -1,9 +1,7 @@
 'use strict';
 
-var xmljs = require('xml-js');
 var searchService = require('../services/searchService');
-//var searchModel = require('../models/searchModel');
-var encoder = require('../encoder/xml-jsonEncoder');
+var encoder = require('../encoder/openSearchSerializer');
 
 
 const PATH = '/api/ideascubeng/v1.0';
@@ -17,17 +15,11 @@ module.exports = function(app) {
   });
 
   app.get(PATH + '/opensearch/:keyword', function(req, res){
-    //console.log(req);
     searchService.search(req.params.keyword)
       .then(
         (results) => {
-          console.log(encoder.jsonToOpenSearchFormat());
-          res.send();
-          //console.log(xmljs.json2xml(results, {compact: true, ignoreComment: true, spaces: 4}));
-          //res.send();
-        //}
-        //(results) => res.send(results)
-        //res.send(xmljs.xml2json('<?xml version="1.0" encoding="UTF-8"?><OpenSearchDescription xmlns="http://a9.com/-/spec/opensearch/1.1/"><ShortName>OLIP</ShortName><Description>OLIP Search Engine</Description><Url type="application/atom+xml" template="http://70.167.220.187:443/opensearch/search?q={searchTerms}"/></OpenSearchDescription>'))
+          //console.log(encoder.toOpenSearchFormat(req.params.keyword,results));
+          res.send(encoder.toOpenSearchFormat(req.params.keyword,results));
         }
       );
   });
@@ -50,3 +42,5 @@ module.exports = function(app) {
   });
 
 }
+
+
