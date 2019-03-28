@@ -9,12 +9,16 @@ var toOpenSearchFormat = function(keyword, entries) {
     var openSearchEntries = [];
 
     var ifaces = os.networkInterfaces();
-    var en = ifaces[constants.if_ip].find( function (itf) {
-        if( itf.family === constants.if_ip_family) {
-            return itf;
-        }
-    });
-
+    var en;
+    try {
+        en = ifaces[constants.if_ip].find( function (itf) {
+            if( itf.family === constants.if_ip_family) {
+                return itf;
+            }
+        });
+    } catch {
+        en = { 'address' : 'localhost' };
+    }
     openSearchFeed.id = 'http://'+en.address+':' + constants.port + '/opensearch/search?q='+keyword;
     openSearchFeed.title = constants.app_name + ' search results'; 
     openSearchFeed.link.href = 'http://' + en.address + ':' + constants.port + '/opensearch/search?q='+keyword;
