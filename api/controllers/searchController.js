@@ -14,7 +14,7 @@ module.exports = function(app) {
       .then((results) => res.send(results));
   });
 
-  app.get('/opensearch/:keyword', function(req, res){
+  app.get(PATH + '/opensearch/search?q=:keyword', function(req, res){
     searchService.search(req.params.keyword)
       .then(
         (results) => {
