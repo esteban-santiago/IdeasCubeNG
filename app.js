@@ -3,7 +3,7 @@ var searchController = require('./api/controllers/searchController');
 
 var app = express();
 
-var port = process.env.PORT || 3000;
+var port = process.env.PORT || 3500;
 
 
 //static files
