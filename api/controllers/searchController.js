@@ -4,7 +4,7 @@ var searchService = require('../services/searchService');
 var encoder = require('../encoder/openSearchSerializer');
 
 
-const PATH = '/api/ideascubeng/v1.0';
+const PATH = '/api/mediacenter/v1.0';
 
 module.exports = function(app) {
 
@@ -26,8 +26,10 @@ module.exports = function(app) {
 
   //Not Implemented
   app.get(PATH + '/search/:field/:keyword', function(req, res){
-    searchService.search(req.params.keyword)
-      .then((results) => res.send(results));
+    /*
+      searchService.search(req.params.keyword)
+        .then((results) => res.send(results));
+    */
   });
 
   //Not Implemented
@@ -37,8 +39,6 @@ module.exports = function(app) {
 
   //Not Implemented
   app.get(PATH + '/search/:language/:field/:keyword', function(req, res){
-    searchService.search(req.params.keyword)
-      .then((results) => res.send(results));
   });
 
 }

@@ -1,22 +1,23 @@
 'use strict';
 var os = require('os');
-
+var constants = require('../models/constants');
 var searchModel = require('../models/searchModel');
+
 
 var toOpenSearchFormat = function(keyword, entries) {
     var openSearchFeed = searchModel.OpenSearchFeedModel;
     var openSearchEntries = [];
 
     var ifaces = os.networkInterfaces();
-    var en = ifaces['en0'].find( function (itf) {
-        if( itf.family === 'IPv4') {
+    var en = ifaces[constants.if_ip].find( function (itf) {
+        if( itf.family === constants.if_ip_family) {
             return itf;
         }
     });
 
-    openSearchFeed.id = 'http://'+en.address+':3000/opensearch/search?q='+keyword;
-    openSearchFeed.title = 'Media Center search results'; 
-    openSearchFeed.link.href = 'http://'+en.address+':3000/opensearch/search?q='+keyword;
+    openSearchFeed.id = 'http://'+en.address+':' + constants.port + '/opensearch/search?q='+keyword;
+    openSearchFeed.title = constants.app_name + ' search results'; 
+    openSearchFeed.link.href = 'http://' + en.address + ':' + constants.port + '/opensearch/search?q='+keyword;
     openSearchFeed.link.rel = 'alternate';
     openSearchFeed.updated = '2019-02-26T11:36:57Z';
     
@@ -28,7 +29,7 @@ var toOpenSearchFormat = function(keyword, entries) {
         _entry.id = 'tag:' + entry.href;
         _entry.updated = '2019-02-26T11:36:57Z';
         _entry.summary.summary = entry.title;
-        _entry.summary.type = 'html';
+        _entry.summary.type = 'file';
         openSearchEntries.push(_entry);
     });
 
