@@ -16,7 +16,7 @@ var toOpenSearchFormat = function(keyword, entries) {
                 return itf;
             }
         });
-    } catch {
+    } catch (error) {
         en = { 'address' : 'localhost' };
     }
     openSearchFeed.id = 'http://'+en.address+':' + constants.port + '/opensearch/search?q='+keyword;
